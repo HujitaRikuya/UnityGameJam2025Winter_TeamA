@@ -1,20 +1,13 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
-using System.Data;
 using UnityEngine;
 
-public class EnemyScript : MonoBehaviour
+public class UI : MonoBehaviour
 {
-    
-    float m_enemy1Health = 0;
     // Start is called before the first frame update
     void Start()
     {
-        if (m_enemy1Health == 0)
-        {
-            
-        }
-            
+        
     }
 
     // Update is called once per frame
