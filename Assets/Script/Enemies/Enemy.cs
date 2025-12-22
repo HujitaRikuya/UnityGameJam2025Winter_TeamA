@@ -39,11 +39,18 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private GameObject expPrefab;
 
+    private GameObject playerObj;
+
     /// <summary>
     /// Update
     /// </summary>
     private void Update()
     {
+        if(playerObj == null)
+        {
+            playerObj = GameObject.Find("Player");
+        }
+
         // プレイヤーを追従
         Chase();
 
@@ -87,19 +94,8 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public void CheckDeath()
     {
-        if(Input.GetKeyDown(KeyCode.E))
-        {
-            // 経験値を落とす
-            DropExp();
-            // 死亡カウント
-            var obj = GameObject.Find("GameManager");
-            var gameManager =  obj.GetComponent<GameManager>();
-            gameManager.CountEnemyDeath();
-
-            Destroy(gameObject);
-        }
-
-        if(_hp <= 0)
+        // if(_hp <= 0)
+        if(Vector3.Distance(playerObj.transform.position,transform.position) < 2.0f)
         {
             // 経験値を落とす
             DropExp();

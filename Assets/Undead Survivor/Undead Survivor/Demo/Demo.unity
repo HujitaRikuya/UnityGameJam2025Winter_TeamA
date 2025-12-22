@@ -18772,6 +18772,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyDeathCountText: {fileID: 88668461}
   _expSlider: {fileID: 1926997919}
+  _levelText: {fileID: 721896643}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
