@@ -120,6 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c24f7c9e6f75f304fa05e10711e0aef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invincibleTime: 0.1
+  expPrefab: {fileID: 4429738524198244373, guid: b1b9b3cb320188247a48c0752da71b12, type: 3}
 --- !u!1 &8452368665157737182
 GameObject:
   m_ObjectHideFlags: 0
