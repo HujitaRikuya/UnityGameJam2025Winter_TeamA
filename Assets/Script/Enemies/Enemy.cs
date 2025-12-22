@@ -36,11 +36,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float invincibleTime = 0.1f;
     private bool _isInvincible = false;
 
-    /// <summary>
-    /// 死亡数
-    /// </summary>
-    /// 
-    private int _deathCount;
+    [SerializeField]
+    private GameObject expPrefab;
 
     /// <summary>
     /// Update
@@ -67,10 +64,11 @@ public class Enemy : MonoBehaviour
     /// </summary>
     private void DropExp()
     {
-        // TODO:経験値を落とす
-        // expObj = Instantiate();
-        // exp = expObj.GetComponent<Exp>();
-        // exp.SetExpValue(_dropExpValue);
+        // 経験値を落とす
+        var expObj = Instantiate(expPrefab);
+        var exp = expObj.GetComponent<Exp>();
+        exp.SetExpValue(_dropExpValue);
+        exp.SetPosition(transform.position);
     }
 
     /// <summary>
@@ -89,12 +87,27 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public void CheckDeath()
     {
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            // 経験値を落とす
+            DropExp();
+            // 死亡カウント
+            var obj = GameObject.Find("GameManager");
+            var gameManager =  obj.GetComponent<GameManager>();
+            gameManager.CountEnemyDeath();
+
+            Destroy(gameObject);
+        }
+
         if(_hp <= 0)
         {
             // 経験値を落とす
             DropExp();
-            _deathCount++;
-            Destroy(this);
+            // 死亡カウント
+            var obj = GameObject.Find("GameManager");
+            var gameManager = obj.GetComponent<GameManager>();
+            gameManager.CountEnemyDeath();
+            Destroy(gameObject);
         }
     }
 
